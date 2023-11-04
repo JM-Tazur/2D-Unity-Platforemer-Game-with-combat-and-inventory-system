@@ -16,9 +16,9 @@ public class CameraFollowPlayer : MonoBehaviour
 
     void Follow()
     {
-        Vector3 targetPosition = target.position + offset;
-        Vector3 smoothPosition = Vector3.Lerp(transform.position, target.position, smoothFactor*Time.fixedDeltaTime);
-        transform.position = smoothPosition;
+        Vector3 targetPosition = target.position;// + offset;
+        //Vector3 smoothPosition = Vector3.Lerp(transform.position, target.position, smoothFactor*Time.fixedDeltaTime);
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
     }
 
 }
