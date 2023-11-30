@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InteractionSystem : MonoBehaviour
 {
-    public Transform detectionPoint;
-    private const float detectionRadius = 0.5f;
-    public LayerMask detectionLayer;
+    [Header("Detection Parameters")]
+    public Transform detectionPoint;    // Detection point
+    private const float detectionRadius = 0.5f; // Detection radius
+    public LayerMask detectionLayer;    // Detection layer
+    public GameObject detectedObject; // Cached trigger object
+    public List<GameObject> pickedItems = new List<GameObject>();// List of picked up items
 
-    public GameObject detectedObject;
     void Update()
     {
         if(DetectObject() && IntereactInput())
@@ -41,5 +44,10 @@ public class InteractionSystem : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(detectionPoint.position, detectionRadius);
+    }
+
+    public void PickUpItem(GameObject Item)
+    {
+        pickedItems.Append(Item);
     }
 }

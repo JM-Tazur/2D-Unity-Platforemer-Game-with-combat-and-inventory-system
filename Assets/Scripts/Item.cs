@@ -18,7 +18,9 @@ public class Item : MonoBehaviour
         switch(type)
         {
             case InteractionType.PickUp:
-                Debug.Log("Pickup");
+                GameObject item = gameObject;
+                FindObjectOfType<InteractionSystem>().PickUpItem(item);
+                gameObject.SetActive(false);
                 break;
             case InteractionType.Examine:
                 Debug.Log("Examine");
