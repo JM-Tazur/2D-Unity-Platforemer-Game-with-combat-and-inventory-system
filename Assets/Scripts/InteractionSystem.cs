@@ -12,6 +12,7 @@ public class InteractionSystem : MonoBehaviour
     private const float detectionRadius = 0.5f; // Detection radius
     public LayerMask detectionLayer;    // Detection layer
     public GameObject detectedObject; // Cached trigger object
+    public bool isExamining;    // Flag set if player is in examine window
 
     [Header("Examine Fields")]
     public GameObject examineWindow;
@@ -62,8 +63,17 @@ public class InteractionSystem : MonoBehaviour
 
     public void ExamineItem(Item item)
     {
-        examineImage.sprite = item.GetComponent<SpriteRenderer>().sprite;
-        examineText.text = item.descriptionText;
-        examineWindow.SetActive(true);
+        if(isExamining)
+        {
+            examineWindow.SetActive(false);
+            isExamining = false;
+        }
+        else
+        {
+            examineImage.sprite = item.GetComponent<SpriteRenderer>().sprite;
+            examineText.text = item.descriptionText;
+            examineWindow.SetActive(true);
+            isExamining = true;
+        }
     }
 }
