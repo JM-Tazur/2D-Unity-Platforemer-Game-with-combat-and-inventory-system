@@ -2973,7 +2973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1272458532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4841,6 +4841,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   detectedObject: {fileID: 0}
+  isExamining: 0
   examineWindow: {fileID: 1272458531}
   examineImage: {fileID: 1774544124}
   examineText: {fileID: 433722637}
