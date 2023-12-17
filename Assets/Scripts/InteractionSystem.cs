@@ -19,9 +19,6 @@ public class InteractionSystem : MonoBehaviour
     public UnityEngine.UI.Image examineImage;
     public Text examineText;
 
-    [Header("Others")]
-    public List<GameObject> pickedItems = new List<GameObject>();// List of picked up items
-
     void Update()
     {
         if(DetectObject() && IntereactInput())
@@ -54,11 +51,6 @@ public class InteractionSystem : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(detectionPoint.position, detectionRadius);
-    }
-
-    public void PickUpItem(GameObject Item)
-    {
-        pickedItems.Append(Item);
     }
 
     public void ExamineItem(Item item)
