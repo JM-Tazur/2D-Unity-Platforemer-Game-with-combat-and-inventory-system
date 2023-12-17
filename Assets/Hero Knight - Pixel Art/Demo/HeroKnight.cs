@@ -195,8 +195,6 @@ public class HeroKnight : MonoBehaviour {
 
     void Jump()
     {
-        bool wasGrounded = m_grounded;
-
         if(m_grounded && !m_rolling)    // On ground
         {
             m_multipleJump = true;
