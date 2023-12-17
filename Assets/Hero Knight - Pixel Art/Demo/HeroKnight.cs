@@ -8,6 +8,7 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
+    [SerializeField] int        m_totalJumps;
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
@@ -25,6 +26,8 @@ public class HeroKnight : MonoBehaviour {
     private float               m_delayToIdle = 0.0f;
     private float               m_rollDuration = 8.0f / 14.0f;
     private float               m_rollCurrentTime;
+    private int                 m_availableJumps;
+    private bool                m_multipleJump;
 
     // Use this for initialization
     void Start ()
@@ -36,6 +39,7 @@ public class HeroKnight : MonoBehaviour {
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+        m_availableJumps = m_totalJumps;
     }
 
     // Update is called once per frame
@@ -144,15 +148,10 @@ public class HeroKnight : MonoBehaviour {
                 m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             }
                 
-
             //Jump
-            else if (Input.GetKeyDown("w") && m_grounded && !m_rolling)
+            else if (Input.GetKeyDown("w"))
             {
-                m_animator.SetTrigger("Jump");
-                m_grounded = false;
-                m_animator.SetBool("Grounded", m_grounded);
-                m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
-                m_groundSensor.Disable(0.2f);
+                Jump();
             }
 
             //Run
@@ -191,6 +190,37 @@ public class HeroKnight : MonoBehaviour {
             GameObject dust = Instantiate(m_slideDust, spawnPosition, gameObject.transform.localRotation) as GameObject;
             // Turn arrow in correct direction
             dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
+        }
+    }
+
+    void Jump()
+    {
+        bool wasGrounded = m_grounded;
+
+        if(m_grounded && !m_rolling)    // On ground
+        {
+            m_multipleJump = true;
+            m_availableJumps--;
+
+            m_animator.SetTrigger("Jump");
+            m_animator.SetBool("Grounded", m_grounded);
+            m_body2d.velocity = Vector2.up * m_jumpForce;//new Vector2(m_body2d.velocity.x, m_jumpForce);
+            m_groundSensor.Disable(0.2f);
+        }
+        else    // Mid air
+        {
+            if(m_multipleJump && m_availableJumps > 0)
+            {
+                m_availableJumps--;
+
+                m_animator.SetTrigger("Jump");
+                m_animator.SetBool("Grounded", m_grounded);
+                m_body2d.velocity = Vector2.up * m_jumpForce;//new Vector2(m_body2d.velocity.x, m_jumpForce);
+                m_groundSensor.Disable(0.2f);
+
+                m_multipleJump = false;
+            }
+            m_availableJumps = m_totalJumps;
         }
     }
 
