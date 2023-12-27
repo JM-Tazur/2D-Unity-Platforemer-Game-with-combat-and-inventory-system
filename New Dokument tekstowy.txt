@@ -1,0 +1,12 @@
+double jump
+camera fix
+inventory start
+interaction
+pickup
+inspect
+
+to do:
+enmies + combat
+inventory equip
+stats
+level
