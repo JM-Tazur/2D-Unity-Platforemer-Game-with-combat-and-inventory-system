@@ -83,6 +83,7 @@ public class EnemyAI : MonoBehaviour
         if(collision.tag == "Player")
         {
             Debug.Log($"{name} Triggered");
+            FindObjectOfType<HealthBar>().LoseHealth(20);
         }
     }
 }

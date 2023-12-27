@@ -7,9 +7,12 @@ using UnityEngine;
 
 public class TrapObject : MonoBehaviour
 {
+    public int DamageDealt;
+
     void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
+        DamageDealt = 10;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,6 +20,7 @@ public class TrapObject : MonoBehaviour
         if(collision.tag == "Player")
         {
             Debug.Log($"{name} Triggered");
+            FindObjectOfType<HealthBar>().LoseHealth(DamageDealt);
         }
     }
 }

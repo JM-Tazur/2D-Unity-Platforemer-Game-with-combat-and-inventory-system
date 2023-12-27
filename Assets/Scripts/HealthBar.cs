@@ -21,6 +21,7 @@ public class HealthBar : MonoBehaviour
         //Check if health is 0 or less -> dead
         if(health <= 0)
         {
+            FindObjectOfType<HeroKnight>().Die();
             Debug.Log("You Died");
         }
     }

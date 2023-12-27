@@ -28,7 +28,7 @@ public class HeroKnight : MonoBehaviour {
     private float               m_rollCurrentTime;
     private int                 m_availableJumps;
     private bool                m_multipleJump;
-
+    private bool                m_isDead;
     // Use this for initialization
     void Start ()
     {
@@ -171,6 +171,9 @@ public class HeroKnight : MonoBehaviour {
                         m_animator.SetInteger("AnimState", 0);
             }
         }
+        
+        if(Input.GetKeyDown("r"))
+            FindObjectOfType<LevelManager>().Restart(true);
     }
 
     // Animation Events
@@ -230,6 +233,16 @@ public class HeroKnight : MonoBehaviour {
             can = false;
         }
 
+        if(m_isDead)
+            return false;
+
         return can;
+    }
+
+    public void Die()
+    {
+        m_isDead = true;
+        m_animator.SetBool("noBlood", m_noBlood);
+        m_animator.SetTrigger("Death");   
     }
 }
