@@ -16,6 +16,8 @@ public class HealthBar : MonoBehaviour
 
         //Reduce health
         health -= value;
+        //Play animation
+        FindObjectOfType<HeroKnight>().Hurt();
         //Refresh UI bar
         fillbar.fillAmount = health / 100;
         //Check if health is 0 or less -> dead

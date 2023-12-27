@@ -12,9 +12,11 @@ public class EnemyAI : MonoBehaviour
     public int nextID = 0;  // int val for next point index
     public int idChangeValues = 1; // value that applies to ID for changing
     public float speed = 2.0f;
+    public float health;
 
     private void Reset()
     {
+        health = 100f;
         Init();
     }
 
@@ -44,8 +46,6 @@ public class EnemyAI : MonoBehaviour
     {   
         MoveToNextPoint();
     }
-
-  
 
     void MoveToNextPoint()
     {
@@ -85,5 +85,24 @@ public class EnemyAI : MonoBehaviour
             Debug.Log($"{name} Triggered");
             FindObjectOfType<HealthBar>().LoseHealth(20);
         }
+    }
+
+    public void Hurt()
+    {
+        if(health <= 0)
+            return;
+        
+        health -= 25;
+
+        if(health <= 0)
+        {
+            Die();
+            Debug.Log($"{name} killed!");
+        }
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
     }
 }
