@@ -60,7 +60,6 @@ public class EnemyAI : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-
         transform.position = Vector2.MoveTowards(transform.position, goalPoint.position, speed*Time.deltaTime);    //Move enemy to goal point
         if(Vector2.Distance(transform.position, goalPoint.position) < 1f)    //Check the distance between enemy and goal point
         {
@@ -76,6 +75,14 @@ public class EnemyAI : MonoBehaviour
             }
             //Apply change of the next id
             nextID += idChangeValues;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            Debug.Log($"{name} Triggered");
         }
     }
 }
