@@ -29,6 +29,7 @@ public class HeroKnight : MonoBehaviour {
     private int                 m_availableJumps;
     private bool                m_multipleJump;
     private bool                m_isDead;
+    private bool                m_isBlocking = false;
     // Use this for initialization
     void Start ()
     {
@@ -47,7 +48,6 @@ public class HeroKnight : MonoBehaviour {
     {
         // Increase timer that controls attack combo
         m_timeSinceAttack += Time.deltaTime;
-
         // Increase timer that checks roll duration
         if(m_rolling)
             m_rollCurrentTime += Time.deltaTime;
@@ -62,6 +62,7 @@ public class HeroKnight : MonoBehaviour {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
         }
+
 
         //Check if character just started falling
         if (m_grounded && !m_groundSensor.State())
@@ -130,13 +131,6 @@ public class HeroKnight : MonoBehaviour {
                 m_timeSinceAttack = 0.0f;
             }
 
-            // Block
-            else if (Input.GetMouseButtonDown(1) && !m_rolling)
-            {
-                m_animator.SetTrigger("Block");
-                m_animator.SetBool("IdleBlock", true);
-            }
-
             else if (Input.GetMouseButtonUp(1))
                 m_animator.SetBool("IdleBlock", false);
 
@@ -172,6 +166,14 @@ public class HeroKnight : MonoBehaviour {
             }
         }
         
+        // Block
+        if (Input.GetMouseButtonDown(1) && !m_rolling)
+        {
+            m_isBlocking = true;
+            m_animator.SetTrigger("Block");
+            m_animator.SetBool("IdleBlock", true);
+        }
+
         if(Input.GetKeyDown("r"))
             FindObjectOfType<LevelManager>().Restart(true);
     }
@@ -194,6 +196,16 @@ public class HeroKnight : MonoBehaviour {
             // Turn arrow in correct direction
             dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
         }
+    }
+
+    public bool IsRolling()
+    {
+        return m_rolling;
+    }
+
+    public bool IsBlocking()
+    {
+        return m_isBlocking;
     }
 
     void Jump()
@@ -234,6 +246,8 @@ public class HeroKnight : MonoBehaviour {
         }
 
         if(m_isDead)
+            return false;
+        if(m_isBlocking)
             return false;
 
         return can;

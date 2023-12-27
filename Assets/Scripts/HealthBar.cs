@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
     public void LoseHealth(int value)
     {
         //Do nothing if dead
-        if(health <= 0)
+        if(health <= 0 || FindObjectOfType<HeroKnight>().IsBlocking() || FindObjectOfType<HeroKnight>().IsRolling())
             return;
 
         //Reduce health
