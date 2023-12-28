@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Item : MonoBehaviour
 {
-    public enum InteractionType {NONE, PickUp, Examine}
+    public enum InteractionType {NONE, PickUp, Examine, Coin}
     public InteractionType type;
 
     [Header("Examine")]
@@ -35,6 +35,10 @@ public class Item : MonoBehaviour
             case InteractionType.Examine:
                 FindObjectOfType<InteractionSystem>().ExamineItem(this);
                 Debug.Log("Examine");
+                break; 
+            case InteractionType.Coin:
+                FindObjectOfType<CoinSystem>().AddCoin();
+                Debug.Log("Coin added");
                 break;
             default:
                 Debug.Log("NULL");
