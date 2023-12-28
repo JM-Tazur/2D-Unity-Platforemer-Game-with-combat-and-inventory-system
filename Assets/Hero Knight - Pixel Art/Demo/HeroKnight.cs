@@ -132,8 +132,11 @@ public class HeroKnight : MonoBehaviour {
             }
 
             else if (Input.GetMouseButtonUp(1))
+            {
+                m_isBlocking = false;
                 m_animator.SetBool("IdleBlock", false);
-
+            }
+                
             // Roll
             else if (Input.GetKeyDown("space") && !m_rolling && !m_isWallSliding)
             {
@@ -246,8 +249,6 @@ public class HeroKnight : MonoBehaviour {
         }
 
         if(m_isDead)
-            return false;
-        if(m_isBlocking)
             return false;
 
         return can;

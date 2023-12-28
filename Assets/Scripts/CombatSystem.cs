@@ -9,7 +9,7 @@ public class CombatSystem : MonoBehaviour
 {
     [Header("Detection Fields")]
     public Transform detectionPoint;    // Detection point
-    private const float detectionRadius = 0.5f; // Detection radius
+    private const float detectionRadius = 2f; // Detection radius
     public LayerMask detectionLayer;    // Detection layer
     public GameObject detectedObject; // Cached trigger object
 
@@ -39,5 +39,11 @@ public class CombatSystem : MonoBehaviour
             detectedObject = obj.gameObject;
             return true;
         }
+    }
+
+        private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(detectionPoint.position, detectionRadius);
     }
 }
