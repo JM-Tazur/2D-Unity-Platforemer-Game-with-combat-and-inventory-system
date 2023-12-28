@@ -6,6 +6,8 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] float      m_jumpForce = 7.5f;
     [SerializeField] float      m_rollForce = 6.0f;
+    [SerializeField] int        m_attackForce = 30;
+    [SerializeField] int        m_maxHealth = 100;
     [SerializeField] bool       m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
     [SerializeField] int        m_totalJumps;
@@ -264,5 +266,45 @@ public class HeroKnight : MonoBehaviour {
     public void Hurt()
     {
         m_animator.SetTrigger("Hurt");
+    }
+
+    public int GetMaxHP()
+    {
+        return m_maxHealth;
+    }
+
+    public int GetATKforce()
+    {
+        return m_attackForce;
+    }
+
+    public float GetJMPforce()
+    {
+        return m_jumpForce;
+    }
+
+    public float GetSpeed()
+    {
+        return m_speed;
+    }
+
+    public void SetMaxHealth(int value)
+    {
+        m_maxHealth =- value;
+    }
+    
+    public void SetAttackForce(int value)
+    {
+        m_attackForce = value;
+    }
+
+    public void SetJumpForce(float value)
+    {
+        m_jumpForce = value;
+    }
+
+    public void SetSpeed(float value)
+    {
+        m_speed = value;
     }
 }

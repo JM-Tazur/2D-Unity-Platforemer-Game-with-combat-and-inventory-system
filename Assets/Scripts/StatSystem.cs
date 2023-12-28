@@ -7,8 +7,8 @@ public class StatSystem : MonoBehaviour
 {
     public int HP;
     public int ATK;
-    public int JMP;
-    public int SPD;
+    public float JMP;
+    public float SPD;
     public Text HPtext;
     public Text ATKtext;
     public Text JMPtext;
@@ -16,10 +16,11 @@ public class StatSystem : MonoBehaviour
 
     void Reset()
     {
-        HP = 100;
-        ATK = 30;
-        JMP = 1;
-        SPD = 1;
+        var player = FindObjectOfType<HeroKnight>();
+        HP = player.GetMaxHP();
+        ATK = player.GetATKforce();
+        JMP = player.GetJMPforce();
+        SPD = player.GetSpeed();
     }
 
     public void AddHP()
@@ -36,13 +37,13 @@ public class StatSystem : MonoBehaviour
 
     public void AddJMP()
     {
-        JMP += 1;
+        JMP += 0.1f;
         UpdateText();
     }
 
     public void AddSPD()
     {
-        SPD += 1;
+        SPD += 0.1f;
         UpdateText();
     }
 
@@ -50,15 +51,26 @@ public class StatSystem : MonoBehaviour
     {
         HPtext.text = "HEALTH: " + HP.ToString();
         ATKtext.text = "ATTACK: " + ATK.ToString();
-        JMPtext.text = "JUMP: " + JMP.ToString();
-        SPDtext.text = "SPEED: " + SPD.ToString();
+        JMPtext.text = "JUMP: " + JMP.ToString("0.0");
+        SPDtext.text = "SPEED: " + SPD.ToString("0.0");
+
+        UpdateCharacter();
     }
 
     void Start()
     {
+        Reset();
         HPtext.text = "HEALTH: " + HP.ToString();
         ATKtext.text = "ATTACK: " + ATK.ToString();
         JMPtext.text = "JUMP: " + JMP.ToString();
         SPDtext.text = "SPEED: " + SPD.ToString();
+    }
+
+    private void UpdateCharacter()
+    {
+        FindObjectOfType<HeroKnight>().SetMaxHealth(HP);
+        FindObjectOfType<HeroKnight>().SetAttackForce(ATK);
+        FindObjectOfType<HeroKnight>().SetJumpForce(JMP);
+        FindObjectOfType<HeroKnight>().SetSpeed(SPD);
     }
 }
