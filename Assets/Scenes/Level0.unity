@@ -402,7 +402,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 38588114}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1769376921}
+        m_TargetAssemblyTypeName: StatSystem, Assembly-CSharp
+        m_MethodName: AddHP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &38588114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,7 +1020,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 193498801}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1769376921}
+        m_TargetAssemblyTypeName: StatSystem, Assembly-CSharp
+        m_MethodName: AddSPD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &193498801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2419,7 +2443,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 345520369}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1769376921}
+        m_TargetAssemblyTypeName: StatSystem, Assembly-CSharp
+        m_MethodName: AddJMP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &345520369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3581,6 +3617,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1769376915}
+    - targetCorrespondingSourceObject: {fileID: 6323719953710832613, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1769376921}
   m_SourcePrefab: {fileID: 100100000, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
 --- !u!1 &525607923
 GameObject:
@@ -11542,6 +11581,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   detectedObject: {fileID: 0}
+--- !u!114 &1769376921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769376896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfedd4d39fa4514a94d92f33e709ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 100
+  ATK: 30
+  JMP: 1
+  SPD: 1
+  HPtext: {fileID: 948846444}
+  ATKtext: {fileID: 469050921}
+  JMPtext: {fileID: 618673005}
+  SPDtext: {fileID: 1645365412}
 --- !u!1 &1774544122
 GameObject:
   m_ObjectHideFlags: 0
@@ -11698,7 +11757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1808934058}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1769376921}
+        m_TargetAssemblyTypeName: StatSystem, Assembly-CSharp
+        m_MethodName: AddATK
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1808934058
 MonoBehaviour:
   m_ObjectHideFlags: 0
