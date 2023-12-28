@@ -3986,6 +3986,7 @@ MonoBehaviour:
   idChangeValues: 1
   speed: 2
   health: 50
+  DamageDealt: 30
 --- !u!61 &570353424
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11563,7 +11564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fillbar: {fileID: 581470587}
-  health: 100
+  health: 600
 --- !u!114 &1769376915
 MonoBehaviour:
   m_ObjectHideFlags: 0

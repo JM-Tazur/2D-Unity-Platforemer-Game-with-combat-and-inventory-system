@@ -13,10 +13,12 @@ public class EnemyAI : MonoBehaviour
     public int idChangeValues = 1; // value that applies to ID for changing
     public float speed = 2.0f;
     public float health;
+    public int DamageDealt;
 
     private void Reset()
     {
         health = 100f;
+        DamageDealt = 20;
         Init();
     }
 
@@ -83,7 +85,7 @@ public class EnemyAI : MonoBehaviour
         if(collision.tag == "Player")
         {
             Debug.Log($"{name} Triggered");
-            FindObjectOfType<HealthBar>().LoseHealth(20);
+            FindObjectOfType<HealthBar>().LoseHealth(DamageDealt);
         }
     }
 
@@ -92,7 +94,7 @@ public class EnemyAI : MonoBehaviour
         if(health <= 0)
             return;
         
-        health -= 25;
+        health -= FindObjectOfType<HeroKnight>().GetATKforce();
 
         if(health <= 0)
         {

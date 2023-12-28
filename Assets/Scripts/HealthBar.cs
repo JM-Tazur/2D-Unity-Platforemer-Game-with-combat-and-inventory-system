@@ -19,13 +19,18 @@ public class HealthBar : MonoBehaviour
         //Play animation
         FindObjectOfType<HeroKnight>().Hurt();
         //Refresh UI bar
-        fillbar.fillAmount = health / 100;
+        fillbar.fillAmount = health / FindObjectOfType<HeroKnight>().GetMaxHP();
         //Check if health is 0 or less -> dead
         if(health <= 0)
         {
             FindObjectOfType<HeroKnight>().Die();
             Debug.Log("You Died");
         }
+    }
+
+    void Start()
+    {
+        health = FindObjectOfType<HeroKnight>().GetMaxHP();
     }
 
     private void Update()
