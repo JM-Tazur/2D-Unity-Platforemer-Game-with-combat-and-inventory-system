@@ -14,12 +14,6 @@ public class LevelManager : MonoBehaviour
 
     public void Restart(bool totalReset)
     {
-        //1-Restart The Scene
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName, LoadSceneMode.Single);
-        //2-Reset the player position
-        //Save the player initial position
-        //Reposition
-        //FindObjectOfType<HeroKnight>().transform.position = playerInitPosition;
+        SceneManager.LoadScene(1);
     }
 }

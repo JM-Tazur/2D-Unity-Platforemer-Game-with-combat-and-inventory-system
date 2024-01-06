@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class HeroKnight : MonoBehaviour {
 
@@ -172,15 +173,18 @@ public class HeroKnight : MonoBehaviour {
         }
         
         // Block
-        if (Input.GetMouseButtonDown(1) && !m_rolling)
+        if (Input.GetMouseButtonDown(1) && !m_rolling && CanMove())
         {
             m_isBlocking = true;
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
         }
 
-        if(Input.GetKeyDown("r"))
-            FindObjectOfType<LevelManager>().Restart(true);
+        if(Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene(0);
+
+        if(Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // Animation Events
