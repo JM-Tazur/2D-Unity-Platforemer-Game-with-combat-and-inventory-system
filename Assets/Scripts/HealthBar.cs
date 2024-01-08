@@ -32,9 +32,4 @@ public class HealthBar : MonoBehaviour
     {
         health = FindObjectOfType<HeroKnight>().GetMaxHP();
     }
-
-    private void Update()
-    {
-
-    }
 }

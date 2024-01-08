@@ -65,8 +65,6 @@ public class HeroKnight : MonoBehaviour {
             m_grounded = true;
             m_animator.SetBool("Grounded", m_grounded);
         }
-
-
         //Check if character just started falling
         if (m_grounded && !m_groundSensor.State())
         {
@@ -90,7 +88,6 @@ public class HeroKnight : MonoBehaviour {
                 GetComponent<SpriteRenderer>().flipX = true;
                 m_facingDirection = -1;
             }
-
             // Move left or right
             if (!m_rolling )
                 m_body2d.velocity = new Vector2(inputX * m_speed, m_body2d.velocity.y);
@@ -109,7 +106,6 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetBool("noBlood", m_noBlood);
                 m_animator.SetTrigger("Death");
             }
-                
             //Hurt
             else if (Input.GetKeyDown("z") && !m_rolling)
                 m_animator.SetTrigger("Hurt");
@@ -118,18 +114,15 @@ public class HeroKnight : MonoBehaviour {
             else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
             {
                 m_currentAttack++;
-
                 // Loop back to one after third attack
                 if (m_currentAttack > 3)
                     m_currentAttack = 1;
-
                 // Reset Attack combo if time since last attack is too large
                 if (m_timeSinceAttack > 1.0f)
                     m_currentAttack = 1;
 
                 // Call one of three attack animations "Attack1", "Attack2", "Attack3"
                 m_animator.SetTrigger("Attack" + m_currentAttack);
-
                 // Reset timer
                 m_timeSinceAttack = 0.0f;
             }
@@ -138,8 +131,7 @@ public class HeroKnight : MonoBehaviour {
             {
                 m_isBlocking = false;
                 m_animator.SetBool("IdleBlock", false);
-            }
-                
+            } 
             // Roll
             else if (Input.GetKeyDown("space") && !m_rolling && !m_isWallSliding)
             {
@@ -147,13 +139,11 @@ public class HeroKnight : MonoBehaviour {
                 m_animator.SetTrigger("Roll");
                 m_body2d.velocity = new Vector2(m_facingDirection * m_rollForce, m_body2d.velocity.y);
             }
-                
             //Jump
             else if (Input.GetKeyDown("w"))
             {
                 Jump();
             }
-
             //Run
             else if (Mathf.Abs(inputX) > Mathf.Epsilon)
             {
@@ -161,7 +151,6 @@ public class HeroKnight : MonoBehaviour {
                 m_delayToIdle = 0.05f;
                 m_animator.SetInteger("AnimState", 1);
             }
-
             //Idle
             else
             {
@@ -171,7 +160,6 @@ public class HeroKnight : MonoBehaviour {
                         m_animator.SetInteger("AnimState", 0);
             }
         }
-        
         // Block
         if (Input.GetMouseButtonDown(1) && !m_rolling && CanMove())
         {
@@ -179,7 +167,6 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetTrigger("Block");
             m_animator.SetBool("IdleBlock", true);
         }
-
         if(Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene(0);
 
@@ -192,7 +179,6 @@ public class HeroKnight : MonoBehaviour {
     void AE_SlideDust()
     {
         Vector3 spawnPosition;
-
         if (m_facingDirection == 1)
             spawnPosition = m_wallSensorR2.transform.position;
         else
@@ -211,12 +197,10 @@ public class HeroKnight : MonoBehaviour {
     {
         return m_rolling;
     }
-
     public bool IsBlocking()
     {
         return m_isBlocking;
     }
-
     void Jump()
     {
         if(m_grounded && !m_rolling)    // On ground
@@ -266,47 +250,38 @@ public class HeroKnight : MonoBehaviour {
         m_animator.SetBool("noBlood", m_noBlood);
         m_animator.SetTrigger("Death");   
     }
-
     public void Hurt()
     {
         m_animator.SetTrigger("Hurt");
     }
-
     public int GetMaxHP()
     {
         return m_maxHealth;
     }
-
     public int GetATKforce()
     {
         return m_attackForce;
     }
-
     public float GetJMPforce()
     {
         return m_jumpForce;
     }
-
     public float GetSpeed()
     {
         return m_speed;
     }
-
     public void SetMaxHealth(int value)
     {
         m_maxHealth =- value;
     }
-    
     public void SetAttackForce(int value)
     {
         m_attackForce = value;
     }
-
     public void SetJumpForce(float value)
     {
         m_jumpForce = value;
     }
-
     public void SetSpeed(float value)
     {
         m_speed = value;

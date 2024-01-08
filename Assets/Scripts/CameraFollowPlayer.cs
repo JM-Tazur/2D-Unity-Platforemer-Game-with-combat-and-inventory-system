@@ -19,8 +19,8 @@ public class CameraFollowPlayer : MonoBehaviour
     {
         Vector3 targetPosition = target.position + offset;
         Vector3 boundPosition = new Vector3(
-            Mathf.Max(targetPosition.x, minValues.x),//Mathf.Clamp(targetPosition.x, minValues.x, maxValues.x),
-            Mathf.Max(targetPosition.y, minValues.y),//Mathf.Clamp(targetPosition.y, minValues.y, maxValues.y),
+            Mathf.Max(targetPosition.x, minValues.x),
+            Mathf.Max(targetPosition.y, minValues.y),
             Mathf.Clamp(targetPosition.z, minValues.z, maxValues.z)
         );
 
@@ -28,5 +28,4 @@ public class CameraFollowPlayer : MonoBehaviour
         smoothPosition.z = transform.position.z;
         transform.position = smoothPosition;
     }
-
 }
