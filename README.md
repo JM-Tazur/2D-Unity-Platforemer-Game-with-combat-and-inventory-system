@@ -1,5 +1,7 @@
 # Simple 2D game made with Unity Engine
 
+Made with Unity Engine version: [2022.3.12f1](https://unity.com/releases/editor/whats-new/2022.3.12)
+
 **Implemented:** <br />
   • Movement with double jump <br />
   • Interaction with environment (pickup, inspect, press button) <br />
