@@ -1,28 +1,28 @@
 # Simple 2D game made with Unity Engine
 
-**Implemented:**
-• Movement with double jump
-• Interaction with environment (pickup, inspect, press button)
-• Enemies patrolling system
-• Combat system based on coliders
-• Inventory/Equipment system
-• Modifiable character attributes
-• Pickable currency
-• Minimal UI
+**Implemented:** <br />
+• Movement with double jump <br />
+• Interaction with environment (pickup, inspect, press button) <br />
+• Enemies patrolling system <br />
+• Combat system based on coliders <br />
+• Inventory/Equipment system <br />
+• Modifiable character attributes <br />
+• Pickable currency <br />
+• Minimal UI <br />
 
-**Keybinds:**
-W - Jump
-A - Left
-D - Right
-Spacebar - Roll
-LMB - Attack
-RMB - Block
-E - Interact
-I - Character menu
-R - Reset game
-ESC - Exit to main menu
+**Keybinds:** <br />
+W - Jump <br />
+A - Left <br />
+D - Right <br />
+Spacebar - Roll <br />
+LMB - Attack <br />
+RMB - Block <br />
+E - Interact <br />
+I - Character menu <br />
+R - Reset game <br />
+ESC - Exit to main menu <br />
 
-**Screenshots:**
+**Screenshots:** <br />
 • Appearance
 ![Zrzut ekranu 2024-03-25 231035](https://github.com/JM-Tazur/2dGame/assets/43813886/8674cfd8-deed-4e33-aae6-fb5cf965a0dd)
 ![Zrzut ekranu 2024-03-25 231122](https://github.com/JM-Tazur/2dGame/assets/43813886/8c95ac8b-9efa-49bc-99e7-a348bd42d876)
